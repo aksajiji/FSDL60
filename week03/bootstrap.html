@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Analysis</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(120deg, #f6d365, #fda085);
+    }
+    .navbar {
+      background-color: #004c8c;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      color: #ffcc00;
+    }
+    .navbar-nav .nav-link {
+      color: white !important;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #ffcc00 !important;
+    }
+    .jumbotron {
+      background-color: #0069d9;
+      color: white;
+      border-radius: 0;
+    }
+    .breadcrumb {
+      background-color: #fff;
+    }
+    .btn-custom {
+      background-color: #ff5733;
+      color: white;
+      border-radius: 30px;
+    }
+    .btn-custom:hover {
+      background-color: #e04e28;
+    }
+    .form-control:focus {
+      border-color: #ff5733;
+      box-shadow: 0 0 5px rgba(255, 87, 51, 0.5);
+    }
+    .feature-icon {
+      font-size: 50px;
+      color: #ff5733;
+    }
+    .feature-card:hover {
+      transform: scale(1.05);
+    }
+    .footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .card {
+      border: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+      background-color: #004c8c;
+      color: white;
+      font-weight: bold;
+    }
+    .card-body {
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">Career Analyzer</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#features">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#career-form">Get Started</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#faq">FAQ</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Career Analysis</li>
+    </ol>
+  </nav>
+
+  <!-- Jumbotron -->
+  <div class="jumbotron text-center">
+    <h1 class="display-4">Career Analysis Tool</h1>
+    <p class="lead">Your journey to the perfect career starts here. Analyze your skills, interests, and find your ideal career path!</p>
+    <a class="btn btn-light btn-lg" href="#career-form" role="button">Start Now</a>
+  </div>
+
+  <!-- Features Section -->
+  <div id="features" class="container my-5">
+    <h2 class="text-center mb-4">Why Use Career Analyzer?</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card feature-card">
+          <div class="card-body text-center">
+            <i class="fas fa-user-cog feature-icon"></i>
+            <h5 class="card-title">Personalized Insights</h5>
+            <p class="card-text">Tailored recommendations based on your unique interests and strengths.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card feature-card">
+          <div class="card-body text-center">
+            <i class="fas fa-chart-line feature-icon"></i>
+            <h5 class="card-title">Market Trends</h5>
+            <p class="card-text">Get the latest job market trends and find high-demand careers.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card feature-card">
+          <div class="card-body text-center">
+            <i class="fas fa-briefcase feature-icon"></i>
+            <h5 class="card-title">Job Opportunities</h5>
+            <p class="card-text">Explore job listings and internships that match your profile.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How It Works Section -->
+  <div class="container my-5">
+    <h2 class="text-center mb-4">How It Works</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">Step 1</div>
+          <div class="card-body">
+            <h5 class="card-title">Fill Out Your Profile</h5>
+            <p class="card-text">Provide your name, age, skills, and interests to get personalized career options.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">Step 2</div>
+          <div class="card-body">
+            <h5 class="card-title">Analyze Results</h5>
+            <p class="card-text">Our tool analyzes your profile and matches you with ideal career paths.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">Step 3</div>
+          <div class="card-body">
+            <h5 class="card-title">Explore Opportunities</h5>
+            <p class="card-text">Receive job recommendations, market trends, and expert insights.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Career Analysis Form -->
+  <div id="career-form" class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h2 class="text-center mb-4">Start Your Career Analysis</h2>
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="name">Full Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" class="form-control" id="age" placeholder="Enter your age" required>
+          </div>
+
+          <div class="form-group">
+            <label for="interest">What interests you the most?</label>
+            <select class="form-control" id="interest" required>
+              <option>Technology</option>
+              <option>Healthcare</option>
+              <option>Finance</option>
+              <option>Arts</option>
+              <option>Education</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="skills">List your top skills (comma-separated)</label>
+            <input type="text" class="form-control" id="skills" placeholder="E.g., Programming, Communication, Leadership" required>
+          </div>
+
+          <button type="submit" class="btn btn-custom btn-block">Analyze Career</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div id="faq" class="container my-5">
+    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+    <div class="accordion" id="faqAccordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              What is Career Analysis?
+            </button>
+          </h5>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+          <div class="card-body">
+            Career Analysis is a tool that helps you identify your ideal career based on your skills, interests, and goals.
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              How does the analysis work?
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+          <div class="card-body">
+            The analysis takes into account your age, skills, and interests to recommend a list of suitable careers for you.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>&copy; 2025 Career Analyzer. All Rights Reserved | <a href="#" class="text-white">Privacy Policy</a></p>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
