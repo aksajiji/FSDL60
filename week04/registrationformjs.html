@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        form {
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Registration Form</h2>
+    <form onsubmit="return validateForm()">
+        <label>Full Name:</label>
+        <input type="text" id="name" placeholder="Enter full name">
+        <div class="error" id="nameError"></div>
+
+        <label>Email:</label>
+        <input type="email" id="email" placeholder="Enter email">
+        <div class="error" id="emailError"></div>
+
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Enter password">
+        <div class="error" id="passwordError"></div>
+
+        <label>Confirm Password:</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm password">
+        <div class="error" id="confirmPasswordError"></div>
+
+        <label>Date of Birth:</label>
+        <input type="date" id="dob">
+        <div class="error" id="dobError"></div>
+
+        <label>Gender:</label>
+        <select id="gender">
+            <option value="">Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <div class="error" id="genderError"></div>
+
+        <label>Phone Number:</label>
+        <input type="text" id="phone" placeholder="Enter 10-digit phone number">
+        <div class="error" id="phoneError"></div>
+
+        <button type="submit">Register</button>
+        <h3 id="successMessage" style="color: green;"></h3>
+    </form>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            // Get values
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let dob = document.getElementById("dob").value;
+            let gender = document.getElementById("gender").value;
+            let phone = document.getElementById("phone").value.trim();
+
+            // Clear previous error messages
+            document.getElementById("nameError").innerHTML = "";
+            document.getElementById("emailError").innerHTML = "";
+            document.getElementById("passwordError").innerHTML = "";
+            document.getElementById("confirmPasswordError").innerHTML = "";
+            document.getElementById("dobError").innerHTML = "";
+            document.getElementById("genderError").innerHTML = "";
+            document.getElementById("phoneError").innerHTML = "";
+            document.getElementById("successMessage").innerHTML = "";
+
+            // Name validation
+            if (name === "") {
+                document.getElementById("nameError").innerHTML = "Full Name is required.";
+                isValid = false;
+            }
+
+            // Email validation
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === "" || !emailPattern.test(email)) {
+                document.getElementById("emailError").innerHTML = "Enter a valid email.";
+                isValid = false;
+            }
+
+            // Password validation
+            if (password.length < 6) {
+                document.getElementById("passwordError").innerHTML = "Password must be at least 6 characters.";
+                isValid = false;
+            }
+
+            // Confirm password validation
+            if (confirmPassword !== password) {
+                document.getElementById("confirmPasswordError").innerHTML = "Passwords do not match.";
+                isValid = false;
+            }
+
+            // Date of birth validation
+            if (dob === "") {
+                document.getElementById("dobError").innerHTML = "Date of Birth is required.";
+                isValid = false;
+            }
+
+            // Gender validation
+            if (gender === "") {
+                document.getElementById("genderError").innerHTML = "Please select a gender.";
+                isValid = false;
+            }
+
+            // Phone number validation
+            let phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                document.getElementById("phoneError").innerHTML = "Enter a valid 10-digit phone number.";
+                isValid = false;
+            }
+
+            // If all validations pass
+            if (isValid) {
+                document.getElementById("successMessage").innerHTML = "Registration Successful!";
+            }
+
+            return isValid; // Prevent form submission if validation fails
+        }
+    </script>
+
+</body>
+</html>
