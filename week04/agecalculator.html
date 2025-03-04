@@ -18,22 +18,51 @@
 <body>
 
     <h2>Age Calculator</h2>
-    <label for="birthYear">Enter Your Birth Year:</label>
-    <input type="number" id="birthYear" placeholder="e.g., 2000">
+    <label for="birthDate">Enter Your Birth Date:</label>
+    <input type="date" id="birthDate">
     <button onclick="calculateAge()">Calculate Age</button>
+    
     <h3 id="result"></h3>
 
     <script>
         function calculateAge() {
-            let birthYear = document.getElementById("birthYear").value;
-            let currentYear = new Date().getFullYear(); // Get current year
-            let age = currentYear - birthYear;
+            let birthDateInput = document.getElementById("birthDate").value;
 
-            if (birthYear === "" || birthYear > currentYear) {
-                document.getElementById("result").innerHTML = "Please enter a valid birth year.";
-            } else {
-                document.getElementById("result").innerHTML = "Your age is: " + age + " years.";
+            if (birthDateInput === "") {
+                document.getElementById("result").innerHTML = "Please enter a valid birth date.";
+                return;
             }
+
+            let birthDate = new Date(birthDateInput);
+            let currentDate = new Date();
+            
+            let birthYear = birthDate.getFullYear();
+            let birthMonth = birthDate.getMonth() + 1; // Months are 0-based in JavaScript
+            let birthDay = birthDate.getDate();
+
+            let currentYear = currentDate.getFullYear();
+            let currentMonth = currentDate.getMonth() + 1;
+            let currentDay = currentDate.getDate();
+
+            let ageYears = currentYear - birthYear;
+            let ageMonths = currentMonth - birthMonth;
+            let ageDays = currentDay - birthDay;
+
+            // Adjust age if the birth date hasn't happened yet in the current year
+            if (ageMonths < 0 || (ageMonths === 0 && ageDays < 0)) {
+                ageYears--;
+                ageMonths += 12;
+            }
+            if (ageDays < 0) {
+                let lastMonth = new Date(currentYear, currentMonth - 1, 0);
+                ageDays += lastMonth.getDate();
+                ageMonths--;
+            }
+
+            document.getElementById("result").innerHTML = 
+                "Your birth date: " + birthDay + "/" + birthMonth + "/" + birthYear + "<br>" +
+                "Current date: " + currentDay + "/" + currentMonth + "/" + currentYear + "<br>" +
+                "Your exact age: " + ageYears + " years, " + ageMonths + " months, and " + ageDays + " days.";
         }
     </script>
 
