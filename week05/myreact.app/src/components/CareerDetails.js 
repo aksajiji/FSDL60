@@ -1,0 +1,17 @@
+import React from "react";
+
+const CareerDetails = ({ career }) => {
+  return (
+    <div className="career-details">
+      <button className="back-btn" onClick={() => window.history.back()}>
+        Back to Suggestions
+      </button>
+      <h2>{career.name}</h2>
+      <p><strong>Description:</strong> {career.description}</p>
+      <p><strong>Salary Range:</strong> {career.salary}</p>
+      <p><strong>Key Skills:</strong> {career.skills}</p>
+    </div>
+  );
+};
+
+export default CareerDetails;

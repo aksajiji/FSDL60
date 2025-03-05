@@ -1,0 +1,21 @@
+import React from "react";
+
+const CareerSuggestion = ({ suggestions, onSelectCareer }) => {
+  return (
+    <div className="career-suggestions">
+      <h2>Suggested Careers</h2>
+      <ul>
+        {suggestions.map((career, index) => (
+          <li key={index} onClick={() => onSelectCareer(career)}>
+            <div className="career-card">
+              <h3>{career.name}</h3>
+              <p>{career.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default CareerSuggestion;
