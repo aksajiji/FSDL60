@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="calendarApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Calendar App</title>
+    <link rel="stylesheet" href="app/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="CalendarController">
+
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <button ng-click="prevMonth()">Prev</button>
+            <h2>{{ monthName }} {{ year }}</h2>
+            <button ng-click="nextMonth()">Next</button>
+        </div>
+
+        <div class="calendar-grid">
+            <div class="calendar-day" ng-repeat="day in daysOfWeek">
+                <strong>{{ day }}</strong>
+            </div>
+            <div class="calendar-day" ng-repeat="date in dates">
+                <div class="date-box" ng-click="selectDate(date)">
+                    <span>{{ date.day }}</span>
+                    <div class="event" ng-repeat="event in date.events">
+                        <span>{{ event }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-form" ng-show="selectedDate">
+            <h3>Add Event for {{ selectedDate.day }}/{{ selectedDate.month }}/{{ selectedDate.year }}</h3>
+            <input type="text" ng-model="newEvent" placeholder="Event Name">
+            <button ng-click="addEvent()">Add Event</button>
+        </div>
+    </div>
+
+    <script src="app/app.js"></script>
+</body>
+</html>
