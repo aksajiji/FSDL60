@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Header</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #1E3A8A;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .spacer {
+            height: 1500px; /* Simulating scrollable content */
+            background: linear-gradient(white, #ddd);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        Sticky Header Example
+    </header>
+
+    <div class="content">
+        <h2>Welcome to the Page</h2>
+        <p>Scroll down to see the sticky header in action. It stays at the top even when you scroll.</p>
+    </div>
+
+    <div class="spacer"></div>
+
+    <footer>
+        &copy; 2025 My Website. All Rights Reserved.
+    </footer>
+
+</body>
+</html>

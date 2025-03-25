@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Column Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            background-color: #1E3A8A;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            width: 25%;
+            background-color: #10B981;
+            padding: 20px;
+            color: white;
+        }
+
+        .main-content {
+            width: 75%;
+            background-color: #F3F4F6;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Two-Column Layout</h1>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Sidebar</h2>
+            <p>Navigation links or additional content.</p>
+        </aside>
+
+        <main class="main-content">
+            <h2>Main Content</h2>
+            <p>This is the primary content area.</p>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 My Website. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

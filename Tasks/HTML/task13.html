@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox List Highlight</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F3F4F6;
+        }
+
+        .checkbox-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1E3A8A;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+
+        input[type="checkbox"]:checked + label {
+            background-color: #10B981;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="checkbox-container">
+        <h2>Task List</h2>
+        <div class="checkbox-group">
+            <input type="checkbox" id="task1">
+            <label for="task1">Complete Assignment</label>
+
+            <input type="checkbox" id="task2">
+            <label for="task2">Read a Chapter</label>
+
+            <input type="checkbox" id="task3">
+            <label for="task3">Go for a Walk</label>
+
+            <input type="checkbox" id="task4">
+            <label for="task4">Call a Friend</label>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F3F4F6;
+            flex-direction: column;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #1E3A8A;
+        }
+
+        .progress-container {
+            width: 80%;
+            max-width: 500px;
+            background-color: #e0e0e0;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: #10B981;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            border-radius: 25px;
+            transition: width 1s ease-in-out;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #1E3A8A;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #10B981;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Progress Bar Example</h2>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar">0%</div>
+    </div>
+    
+    <button onclick="fillProgress()">Start Progress</button>
+
+    <script>
+        function fillProgress() {
+            let progressBar = document.getElementById("progressBar");
+            let width = 0;
+            let interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                } else {
+                    width++;
+                    progressBar.style.width = width + "%";
+                    progressBar.textContent = width + "%";
+                }
+            }, 30);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+.custom-list {
+    list-style-image: url('bullet-icon.png'); /* Replace with your icon path */
+    padding-left: 30px;
+}
+
+.custom-list li {
+    margin: 8px 0;
+}

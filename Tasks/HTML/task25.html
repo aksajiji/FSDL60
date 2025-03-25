@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typewriter Effect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1E1E1E;
+            color: white;
+            font-family: "Courier New", monospace;
+        }
+
+        .typewriter-container {
+            overflow: hidden;
+            border-right: 2px solid white;
+            white-space: nowrap;
+            font-size: 1.5rem;
+            width: 0;
+            animation: typing 4s steps(40, end) forwards, blink 0.7s infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="typewriter-container">
+        Welcome to the Typewriter Effect!
+    </div>
+
+</body>
+</html>

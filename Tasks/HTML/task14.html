@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanding Search Bar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F3F4F6;
+        }
+
+        .search-container {
+            position: relative;
+            width: 250px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #1E3A8A;
+            border-radius: 25px;
+            outline: none;
+            transition: width 0.4s ease-in-out;
+        }
+
+        .search-container input:focus {
+            width: 350px;
+            border-color: #10B981;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <input type="text" placeholder="Search...">
+    </div>
+
+</body>
+</html>
