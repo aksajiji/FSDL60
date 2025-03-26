@@ -1,42 +1,123 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="calendarApp">
+<html ng-app="angularProject">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AngularJS Calendar App</title>
-    <link rel="stylesheet" href="app/app.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <title>Angular Project - Enhanced To-Do List</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.19.0/sortable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="app.js"></script>
 </head>
-<body ng-controller="CalendarController">
-
-    <div class="calendar-container">
-        <div class="calendar-header">
-            <button ng-click="prevMonth()">Prev</button>
-            <h2>{{ monthName }} {{ year }}</h2>
-            <button ng-click="nextMonth()">Next</button>
-        </div>
-
-        <div class="calendar-grid">
-            <div class="calendar-day" ng-repeat="day in daysOfWeek">
-                <strong>{{ day }}</strong>
+<body ng-controller="TodoController">
+  <div class="container">
+    <header class="text-center">
+      <h1>Angular Project</h1>
+      <p class="lead">Your Enhanced To-Do List Application</p>
+    </header>
+    
+    <div class="row">
+      <!-- Category Management -->
+      <div class="col-md-3">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Categories</h3>
+          </div>
+          <div class="panel-body">
+            <div class="input-group">
+              <input type="text" class="form-control" ng-model="newCategory" placeholder="New category">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" ng-click="addCategory()">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+              </span>
             </div>
-            <div class="calendar-day" ng-repeat="date in dates">
-                <div class="date-box" ng-click="selectDate(date)">
-                    <span>{{ date.day }}</span>
-                    <div class="event" ng-repeat="event in date.events">
-                        <span>{{ event }}</span>
-                    </div>
-                </div>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="category in categories">
+              {{category.name}}
+              <span class="badge">{{category.tasks.length}}</span>
+              <button class="btn btn-xs btn-danger pull-right" ng-click="removeCategory($index)">
+                <span class="glyphicon glyphicon-trash"></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Task Management -->
+      <div class="col-md-9">
+        <div class="panel panel-default" ng-repeat="category in categories">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              {{category.name}}
+              <span class="label label-default pull-right">
+                {{getCompletedCount(category)}}/{{category.tasks.length}} completed
+              </span>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <!-- Progress Bar - FIXED -->
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped" 
+                   role="progressbar" 
+                   ng-style="{'width': getProgress(category) + '%'}">
+                {{getProgress(category)}}%
+              </div>
             </div>
+            
+            <!-- Task Input -->
+            <div class="input-group">
+              <input type="text" class="form-control" 
+                     ng-model="newTask[category.name]" 
+                     placeholder="Add new task">
+              <div class="input-group-btn">
+                <select class="form-control" ng-model="newTaskPriority[category.name]">
+                  <option value="high">High</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="low">Low</option>
+                </select>
+                <button class="btn btn-success" ng-click="addTask(category)">
+                  <span class="glyphicon glyphicon-plus"></span> Add
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Task List -->
+          <ul class="list-group" ui-sortable="sortableOptions" ng-model="category.tasks">
+            <li class="list-group-item" ng-repeat="task in category.tasks" 
+                ng-class="{
+                  'list-group-item-success': task.isCompleted,
+                  'high-priority': task.priority === 'high',
+                  'medium-priority': task.priority === 'medium',
+                  'low-priority': task.priority === 'low'
+                }">
+              <div class="checkbox" style="display: inline-block; margin-right: 10px;">
+                <label>
+                  <input type="checkbox" ng-model="task.isCompleted" ng-change="saveTasks()">
+                </label>
+              </div>
+              {{task.name}}
+              <span class="label label-{{getPriorityClass(task.priority)}}">
+                {{task.priority}} priority
+              </span>
+              <div class="btn-group pull-right">
+                <button class="btn btn-xs btn-info" ng-click="editTask(task)">
+                  <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button class="btn btn-xs btn-danger" ng-click="removeTask(category, $index)">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+              </div>
+            </li>
+          </ul>
         </div>
-
-        <div class="event-form" ng-show="selectedDate">
-            <h3>Add Event for {{ selectedDate.day }}/{{ selectedDate.month }}/{{ selectedDate.year }}</h3>
-            <input type="text" ng-model="newEvent" placeholder="Event Name">
-            <button ng-click="addEvent()">Add Event</button>
-        </div>
+      </div>
     </div>
-
-    <script src="app/app.js"></script>
+  </div>
 </body>
 </html>
