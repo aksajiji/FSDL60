@@ -1,0 +1,16 @@
+<div class="container">
+    <h2>{{ student.id === 0 ? 'Add' : 'Edit' }} Student</h2>
+    <form (ngSubmit)="onSubmit()">
+      <label for="name">Name:</label>
+      <input type="text" id="name" [(ngModel)]="student.name" name="name" required>
+      
+      <label for="age">Age:</label>
+      <input type="number" id="age" [(ngModel)]="student.age" name="age" required>
+      
+      <label for="course">Course:</label>
+      <input type="text" id="course" [(ngModel)]="student.course" name="course" required>
+  
+      <button type="submit">{{ student.id === 0 ? 'Add' : 'Update' }} Student</button>
+    </form>
+  </div>
+  

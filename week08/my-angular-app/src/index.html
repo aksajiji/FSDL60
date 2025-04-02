@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Events & Validations</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+    <style>
+        .error { color: red; }
+        .valid { color: green; }
+    </style>
+</head>
+<body ng-controller="MainController"> 
+  <app-root></app-root> 
+
+    <h2>AngularJS Events and Validations</h2>
+
+    <!-- Form with validation -->
+    <form name="userForm" novalidate>
+        
+        <!-- Name Input -->
+        <label>Name:</label>
+        <input type="text" name="name" ng-model="user.name" ng-required="true" ng-minlength="3" ng-blur="onBlur()" />
+        <span class="error" ng-show="userForm.name.$dirty && userForm.name.$invalid">
+            Name is required (Min 3 chars)
+        </span>
+        <br><br>
+
+        <!-- Email Input -->
+        <label>Email:</label>
+        <input type="email" name="email" ng-model="user.email" ng-required="true" />
+        <span class="error" ng-show="userForm.email.$dirty && userForm.email.$invalid">
+            Enter a valid email.
+        </span>
+        <br><br>
+
+        <!-- Password Input -->
+        <label>Password:</label>
+        <input type="password" name="password" ng-model="user.password" ng-required="true" ng-minlength="6" />
+        <span class="error" ng-show="userForm.password.$dirty && userForm.password.$invalid">
+            Password must be at least 6 characters.
+        </span>
+        <br><br>
+
+        <!-- Select (Dropdown) -->
+        <label>Role:</label>
+        <select name="role" ng-model="user.role" ng-change="onRoleChange()">
+            <option value="">Select Role</option>
+            <option value="Admin">Admin</option>
+            <option value="User">User</option>
+        </select>
+        <br><br>
+
+        <!-- Submit Button -->
+        <button type="submit" ng-click="submitForm()" ng-disabled="userForm.$invalid">
+            Submit
+        </button>
+    </form>
+
+    <p>{{ message }}</p>
+
+</body>
+<script src="app.js"></script>
+</html>
